@@ -1,0 +1,36 @@
+﻿@page "/CreateAuthor"
+@using AuthorAPI.Interfaces
+@using AuthorAPI.Models
+@inject IAuthorHome _authorHome;
+<h3>CreateAuthor</h3>
+<form>
+<div class="form-group">
+    <label for="authorFirstName">Author First Name</label>
+    <input type="text" class="form-control" id="authorFirstName"  placeholder="Enter First Name" @bind="@FirstName">
+</div>
+<div class="form-group">
+    <label for="authorLastName">Author Last Name</label>
+    <input type="text" class="form-control" id="authorLastName" placeholder="Enter Last Name" @bind="@LastName">
+</div>
+<button type="button" class="btn btn-primary" @onclick="CreateAuthorAsync">Submit</button>
+</form>
+
+@code {
+    private string FirstName;
+    private string LastName;
+
+    private async Task CreateAuthorAsync()
+    {
+        
+        try
+        {
+            await _authorHome.AddAsync(new Author(FirstName, LastName));
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+        }
+   
+    }
+
+}

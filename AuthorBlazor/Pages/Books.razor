@@ -1,0 +1,74 @@
+﻿@page "/Books"
+@using AuthorAPI.Models
+@using AuthorAPI.Interfaces
+@inject IBookHome bookHome
+<h3>Books</h3>
+<input class="form-control" type="text" placeholder="Filter..."
+           @bind="Filter"
+           @bind:event="oninput">
+ <table class="table">
+        <thead>
+        <tr>
+            <th>ISBN</th>
+            <th>Title</th>
+            <th>Year</th>
+            <th>Genre</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in BooksFound)
+        {
+            if (!IsVisible(item))
+            continue;
+            <tr>
+                <td>@item.ISBN</td>
+                <td>@item.Title</td>
+                <td>@item.PublicationYear</td>
+                <td>@item.Genre</td>
+                <td><button type="submit" @onclick="@(() => DeleteBook(item.ISBN))">Delete</button></td>
+            </tr>
+        }
+        </tbody>
+    </table>
+
+@code {
+    public ICollection<Book> BooksFound = new List<Book>();
+    public string Filter { get; set; }
+    
+    protected override async Task OnInitializedAsync()
+    {
+        BooksFound = await bookHome.GetAsync();
+        
+    }
+
+    private async Task DeleteBook(int id)
+    {
+        try
+        {
+            await bookHome.DeleteAsync(id);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+    }
+    
+    public bool IsVisible(Book book)
+    {
+        if (string.IsNullOrEmpty(Filter))
+            return true;
+ 
+        if (book.Title.Contains(Filter, StringComparison.OrdinalIgnoreCase))
+            return true;
+        
+        if (book.PublicationYear.ToString().Contains(Filter, StringComparison.OrdinalIgnoreCase))
+            return true;
+ 
+        if (book.Genre.StartsWith(Filter) || book.Title.StartsWith(Filter))
+            return true;
+ 
+        return false;
+    }
+
+}

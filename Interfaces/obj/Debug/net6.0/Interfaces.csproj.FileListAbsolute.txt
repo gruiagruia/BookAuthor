@@ -1,0 +1,15 @@
+D:\DNP\BookAuthor-Exam\Interfaces\bin\Debug\net6.0\Interfaces.deps.json
+D:\DNP\BookAuthor-Exam\Interfaces\bin\Debug\net6.0\Interfaces.dll
+D:\DNP\BookAuthor-Exam\Interfaces\bin\Debug\net6.0\ref\Interfaces.dll
+D:\DNP\BookAuthor-Exam\Interfaces\bin\Debug\net6.0\Interfaces.pdb
+D:\DNP\BookAuthor-Exam\Interfaces\bin\Debug\net6.0\Entities.dll
+D:\DNP\BookAuthor-Exam\Interfaces\bin\Debug\net6.0\Entities.pdb
+D:\DNP\BookAuthor-Exam\Interfaces\obj\Debug\net6.0\Interfaces.csproj.AssemblyReference.cache
+D:\DNP\BookAuthor-Exam\Interfaces\obj\Debug\net6.0\Interfaces.GeneratedMSBuildEditorConfig.editorconfig
+D:\DNP\BookAuthor-Exam\Interfaces\obj\Debug\net6.0\Interfaces.AssemblyInfoInputs.cache
+D:\DNP\BookAuthor-Exam\Interfaces\obj\Debug\net6.0\Interfaces.AssemblyInfo.cs
+D:\DNP\BookAuthor-Exam\Interfaces\obj\Debug\net6.0\Interfaces.csproj.CoreCompileInputs.cache
+D:\DNP\BookAuthor-Exam\Interfaces\obj\Debug\net6.0\Interfaces.csproj.CopyComplete
+D:\DNP\BookAuthor-Exam\Interfaces\obj\Debug\net6.0\Interfaces.dll
+D:\DNP\BookAuthor-Exam\Interfaces\obj\Debug\net6.0\ref\Interfaces.dll
+D:\DNP\BookAuthor-Exam\Interfaces\obj\Debug\net6.0\Interfaces.pdb

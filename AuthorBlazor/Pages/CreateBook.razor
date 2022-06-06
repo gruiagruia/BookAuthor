@@ -1,0 +1,68 @@
+﻿@page "/CreateBook"
+@using AuthorAPI.Models
+@using AuthorAPI.Interfaces
+@inject IAuthorHome authorHome
+@inject IBookHome bookHome
+
+<h3>CreateBook</h3>
+<div class="form-group">
+        <label for="ISBN">ISBN</label>
+        <input type="number" class="form-control" id="ISBN" placeholder="Enter ISBN" @bind="bookToCreate.ISBN">
+    </div>
+    <div class="form-group">
+        <label for="Title">Title</label>
+        <input type="text" class="form-control" id="Title" placeholder="Enter Title" @bind="bookToCreate.Title">
+    </div>
+    <div class="form-group">
+        <label for="pubYear">Publication Year</label>
+        <input type="number" class="form-control" id="pubYear" placeholder="Enter Publication Year" @bind="bookToCreate.PublicationYear">
+    </div>
+    <div class="form-group">
+        <label for="pages">No. Pages</label>
+        <input type="number" class="form-control" id="pages" placeholder="Enter No. Pages" @bind="bookToCreate.NumOfPages">
+    </div>
+    <div class="form-group">
+        <label for="genre">Genre</label>
+        <input type="text" class="form-control" id="genre" placeholder="Enter Genre" @bind="bookToCreate.Genre">
+    </div>
+    <select class="form-control selectpicker" @bind="bookAuthorId">
+        <option>--select--</option>
+        @foreach (var item in Authors)
+        {
+        <option value="@item.Id">@item.FirstName @item.LastName</option> // Blazor needs to know what values it binds to!
+        }
+        </select>
+    <button type="button" class="btn btn-primary" @onclick="CreateBookAsync" >Submit</button>
+
+
+
+@code {
+    public ICollection<Author> Authors = new List<Author>();
+    public int bookAuthorId;
+    private Book? bookToCreate = new Book();
+    
+
+    protected override async Task OnInitializedAsync()
+    {
+        Authors = await authorHome.GetAsync();
+    }
+    
+   
+
+    private async Task CreateBookAsync()
+    {
+        Console.WriteLine("HIIIIIIIIIIIIIIIIIIII");
+        try
+        {   
+             await bookHome.AddAsync(bookToCreate, bookAuthorId);
+            bookToCreate = new Book();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+        }
+        
+        
+    }
+
+}
